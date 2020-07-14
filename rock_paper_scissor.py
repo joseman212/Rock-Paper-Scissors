@@ -2,20 +2,26 @@
 
 # jose perez
 # 8/21/19
+# updated 7/13/2020
 # rock paper scissors
 
+# modules 
 from random import choice
 
+# function calls 
 def rock_paper_scissors():
     print('Rock Paper Scissors')
     the_input = user_input()
     ai_choice = random_choice()
     result(the_input, ai_choice)
     rematch()
-    
+
+# accepts user input, validates and returns the_input    
 def user_input():
+    # choices for user input
     choices = ['rock', 'paper', 'scissors']
     valid = False
+    # while loop for validation, use try/catch
     while valid == False:
         try:
             the_input = input('choose: rock, paper or scissors ')
@@ -25,12 +31,14 @@ def user_input():
             print('choose rock, paper or scissors')
     return the_input
 
+# random choice for AI and returns the_choice
 def random_choice():
+    # choices for AI
     ai_choices = ['rock', 'paper', 'scissors']
     the_choice = choice(ai_choices)
     return the_choice
             
-            
+# game logic, displays user and AI choices and result            
 def result(the_input, ai_choice):
     print(f'your choice is {the_input.title()} and opponent\'s choice was {ai_choice.title()}')
     if the_input == ai_choice:
@@ -44,9 +52,12 @@ def result(the_input, ai_choice):
     else:
         print(f'You Lose, {ai_choice} beats {the_input}')
     
+# prompt user for rematch, validates input
 def rematch():
+    # user choices for rematch
     options = ['yes', 'no']
     valid = False
+    # while loop for validation, try/ catch used
     while valid == False:
         try:
             a_rematch = input('Wanna play again? yes or no ').lower()
@@ -54,6 +65,7 @@ def rematch():
                 valid = True
         except ValueError:
             print('enter either yes or no')
+    # runs main function again if user wants rematch
     if a_rematch == 'yes':
         rock_paper_scissors()
     else:
